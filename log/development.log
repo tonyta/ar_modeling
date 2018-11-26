@@ -1,0 +1,492 @@
+  [1m[35m (2.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "review_settings" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "is_admin" boolean)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "foos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "user_type" varchar(255))[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "bars" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "sender_id" integer, "sender_type" varchar(255))[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "company" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "companies_id" integer)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_users_on_companies_id" ON "users" ("companies_id")[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "company" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "companies_id" integer)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_users_on_companies_id" ON "users" ("companies_id")[0m
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "company" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar) [0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "companies_id" integer) 
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "company" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar) [0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "companies_id" integer) 
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar) [0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "companies_id" integer) 
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "companies" ("name") VALUES (?)  [["name", "Reflektive, Inc."]]
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mCompany Load (0.2ms)[0m  SELECT  "companies".* FROM "companies"  ORDER BY "companies"."id" ASC LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar) [0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "companies_id" integer) 
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "companies" ("name") VALUES (?)  [["name", "Reflektive, Inc."]]
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar) [0m
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar) [0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "companies_id" integer) 
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "companies" ("name") VALUES (?)  [["name", "Reflektive, Inc."]]
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar) [0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "company_id" integer) 
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "companies" ("name") VALUES (?)  [["name", "Reflektive, Inc."]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("name", "company_id") VALUES (?, ?)[0m  [["name", "Tony"], ["company_id", 1]]
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "users" ("name", "company_id") VALUES (?, ?)  [["name", "Miguel"], ["company_id", 1]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mCompany Load (0.1ms)[0m  SELECT  "companies".* FROM "companies"  ORDER BY "companies"."id" ASC LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."company_id" = ?[0m  [["company_id", 1]]
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar) [0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "company_id" integer) 
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "companies" ("name") VALUES (?)  [["name", "Reflektive, Inc."]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("name", "company_id") VALUES (?, ?)[0m  [["name", "Tony"], ["company_id", 1]]
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "users" ("name", "company_id") VALUES (?, ?)  [["name", "Miguel"], ["company_id", 1]]
+  [1m[36m (0.4ms)[0m  [1mcommit transaction[0m
+  [1m[35mCore::Company Load (0.2ms)[0m  SELECT  "companies".* FROM "companies"  ORDER BY "companies"."id" ASC LIMIT 1
+  [1m[36mCore::Company Load (0.2ms)[0m  [1mSELECT  "companies".* FROM "companies"  ORDER BY "companies"."id" ASC LIMIT 1[0m
+  [1m[35mCore::Company Load (0.1ms)[0m  SELECT  "companies".* FROM "companies"  ORDER BY "companies"."id" ASC LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar) [0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "company_id" integer) 
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "companies" ("name") VALUES (?)  [["name", "Reflektive, Inc."]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("name", "company_id") VALUES (?, ?)[0m  [["name", "Tony"], ["company_id", 1]]
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "users" ("name", "company_id") VALUES (?, ?)  [["name", "Miguel"], ["company_id", 1]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mCore::Company Load (0.1ms)[0m  SELECT  "companies".* FROM "companies"  ORDER BY "companies"."id" ASC LIMIT 1
+  [1m[36mCore::User Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."company_id" = ?[0m  [["company_id", 1]]
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar) [0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "company_id" integer) 
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "companies" ("name") VALUES (?)  [["name", "Reflektive, Inc."]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("name", "company_id") VALUES (?, ?)[0m  [["name", "Tony"], ["company_id", 1]]
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("name", "company_id") VALUES (?, ?)  [["name", "Miguel"], ["company_id", 1]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mCore::Company Load (0.1ms)[0m  SELECT  "companies".* FROM "companies"  ORDER BY "companies"."id" ASC LIMIT 1
+  [1m[36mCore::User Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."company_id" = ?[0m  [["company_id", 1]]
+  [1m[35mCompany Load (0.1ms)[0m  SELECT  "companies".* FROM "companies"  ORDER BY "companies"."id" ASC LIMIT 1
+  [1m[36mCore::User Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."company_id" = ?[0m  [["company_id", 1]]
+  [1m[35mCompany Load (0.1ms)[0m  SELECT  "companies".* FROM "companies"  ORDER BY "companies"."id" ASC LIMIT 1
+  [1m[36mCore::User Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."company_id" = ?[0m  [["company_id", 1]]
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar) [0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "company_id" integer) 
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "companies" ("name") VALUES (?)  [["name", "Reflektive, Inc."]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("name", "company_id") VALUES (?, ?)[0m  [["name", "Tony"], ["company_id", 1]]
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "users" ("name", "company_id") VALUES (?, ?)  [["name", "Miguel"], ["company_id", 1]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mCompany Load (0.1ms)[0m  SELECT  "companies".* FROM "companies"  ORDER BY "companies"."id" ASC LIMIT 1
+  [1m[36mCore::User Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."base_company_id" = ?[0m  [[nil, 1]]
+  [1m[35mCore::User Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."base_company_id" = ?  [[nil, 1]]
+  [1m[36mCore::Company Load (0.1ms)[0m  [1mSELECT  "companies".* FROM "companies"  ORDER BY "companies"."id" ASC LIMIT 1[0m
+  [1m[35mCore::User Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."base_company_id" = ?  [[nil, 1]]
+  [1m[36mCore::User Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."base_company_id" = ?[0m  [[nil, 1]]
+  [1m[35mCore::Company Load (0.1ms)[0m  SELECT  "companies".* FROM "companies"  ORDER BY "companies"."id" ASC LIMIT 1
+  [1m[36mCore::User Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."base_company_id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [[nil, 1]]
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar) [0m
+  [1m[35m (0.2ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "company_id" integer) 
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "companies" ("name") VALUES (?)  [["name", "Reflektive, Inc."]]
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("name", "company_id") VALUES (?, ?)[0m  [["name", "Tony"], ["company_id", 1]]
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.4ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "users" ("name", "company_id") VALUES (?, ?)  [["name", "Miguel"], ["company_id", 1]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mCore::Company Load (0.1ms)[0m  SELECT  "companies".* FROM "companies"  ORDER BY "companies"."id" ASC LIMIT 1
+  [1m[36mCore::User Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."company_id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["company_id", 1]]
+  [1m[35mCore::Company Load (0.1ms)[0m  SELECT  "companies".* FROM "companies"  ORDER BY "companies"."id" ASC LIMIT 1
+  [1m[36mCore::User Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."company_id" = ?[0m  [["company_id", 1]]
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar) [0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "company_id" integer) 
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "companies" ("name") VALUES (?)  [["name", "Reflektive, Inc."]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("name", "company_id") VALUES (?, ?)[0m  [["name", "Tony"], ["company_id", 1]]
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "users" ("name", "company_id") VALUES (?, ?)  [["name", "Miguel"], ["company_id", 1]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mReviews::Company Load (0.1ms)[0m  SELECT  "companies".* FROM "companies"  ORDER BY "companies"."id" ASC LIMIT 1
+  [1m[36mReviews::Company Load (0.2ms)[0m  [1mSELECT  "companies".* FROM "companies"  ORDER BY "companies"."id" ASC LIMIT 1[0m
+  [1m[35mCore::User Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."company_id" = ?  [["company_id", 1]]
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar) [0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "company_id" integer) 
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar) [0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "company_id" integer) 
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "companies" ("name") VALUES (?)  [["name", "Reflektive, Inc."]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.4ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("name", "company_id") VALUES (?, ?)[0m  [["name", "Tony"], ["company_id", 1]]
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "users" ("name", "company_id") VALUES (?, ?)  [["name", "Miguel"], ["company_id", 1]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar) [0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "company_id" integer) 
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "companies" ("name") VALUES (?)  [["name", "Reflektive, Inc."]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("name", "company_id") VALUES (?, ?)[0m  [["name", "Tony"], ["company_id", 1]]
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "users" ("name", "company_id") VALUES (?, ?)  [["name", "Miguel"], ["company_id", 1]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar) [0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "company_id" integer) 
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "companies" ("name") VALUES (?)  [["name", "Reflektive, Inc."]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("name", "company_id") VALUES (?, ?)[0m  [["name", "Tony"], ["company_id", 1]]
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("name", "company_id") VALUES (?, ?)  [["name", "Miguel"], ["company_id", 1]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar) [0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "company_id" integer) 
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "companies" ("name") VALUES (?)  [["name", "Reflektive, Inc."]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("name", "company_id") VALUES (?, ?)[0m  [["name", "Tony"], ["company_id", 1]]
+  [1m[35m (0.4ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "users" ("name", "company_id") VALUES (?, ?)  [["name", "Miguel"], ["company_id", 1]]
+  [1m[36m (0.4ms)[0m  [1mcommit transaction[0m
+  [1m[35mReviews::User Load (0.2ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mReviews::User Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mReviews::Company Load (0.1ms)[0m  SELECT  "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mReviews::User Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mReviews::Company Load (0.0ms)[0m  SELECT  "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mReviews::User Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."company_id" = ?[0m  [["company_id", 1]]
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar) [0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "company_id" integer) 
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "companies" ("name") VALUES (?)  [["name", "Reflektive, Inc."]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("name", "company_id") VALUES (?, ?)[0m  [["name", "Tony"], ["company_id", 1]]
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "users" ("name", "company_id") VALUES (?, ?)  [["name", "Miguel"], ["company_id", 1]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mReviews::User Load (0.1ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mReviews::Company Load (0.1ms)[0m  [1mSELECT  "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mReviews::User Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."company_id" = ?  [["company_id", 1]]
+  [1m[36mReviews::User Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mReviews::User Load (0.1ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mReviews::Company Load (0.1ms)[0m  [1mSELECT  "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mReviews::User Load (0.1ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mReviews::Company Load (0.0ms)[0m  [1mSELECT  "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mReviews::User Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."company_id" = ?  [["company_id", 1]]
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar) [0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "company_id" integer) 
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar) [0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "company_id" integer) 
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "companies" ("name") VALUES (?)  [["name", "Reflektive, Inc."]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("name", "company_id") VALUES (?, ?)[0m  [["name", "Tony"], ["company_id", 1]]
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "users" ("name", "company_id") VALUES (?, ?)  [["name", "Miguel"], ["company_id", 1]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mCore::User Load (0.2ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mCore::User Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mCore::Company Load (0.1ms)[0m  SELECT  "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCore::User Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mCore::Company Load (0.1ms)[0m  SELECT  "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCore::User Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."company_id" = ?[0m  [["company_id", 1]]
+  [1m[35mReviews::User Load (0.1ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mReviews::Company Load (0.0ms)[0m  [1mSELECT  "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mReviews::User Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."company_id" = ?  [["company_id", 1]]
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar) [0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "company_id" integer) 
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "companies" ("name") VALUES (?)  [["name", "Reflektive, Inc."]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("name", "company_id") VALUES (?, ?)[0m  [["name", "Tony"], ["company_id", 1]]
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "users" ("name", "company_id") VALUES (?, ?)  [["name", "Miguel"], ["company_id", 1]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mReviews::User Load (0.1ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mReviews::User Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar) [0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "company_id" integer) 
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "companies" ("name") VALUES (?)  [["name", "Reflektive, Inc."]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("name", "company_id") VALUES (?, ?)[0m  [["name", "Tony"], ["company_id", 1]]
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "users" ("name", "company_id") VALUES (?, ?)  [["name", "Miguel"], ["company_id", 1]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar) [0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "company_id" integer) 
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "companies" ("name") VALUES (?)  [["name", "Reflektive, Inc."]]
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("name", "company_id") VALUES (?, ?)[0m  [["name", "Tony"], ["company_id", 1]]
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "users" ("name", "company_id") VALUES (?, ?)  [["name", "Miguel"], ["company_id", 1]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar) [0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "company_id" integer) 
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "companies" ("name") VALUES (?)  [["name", "Reflektive, Inc."]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("name", "company_id") VALUES (?, ?)[0m  [["name", "Tony"], ["company_id", 1]]
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "users" ("name", "company_id") VALUES (?, ?)  [["name", "Miguel"], ["company_id", 1]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mReviews::User Load (0.1ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mReviews::Company Load (0.1ms)[0m  [1mSELECT  "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mReviews::User Load (0.2ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mReviews::User Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mReviews::Company Load (0.1ms)[0m  SELECT  "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mReviews::User Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mReviews::Company Load (0.0ms)[0m  SELECT  "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mReviews::User Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."company_id" = ?[0m  [["company_id", 1]]
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar) [0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "company_id" integer) 
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "companies" ("name") VALUES (?)  [["name", "Reflektive, Inc."]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("name", "company_id") VALUES (?, ?)[0m  [["name", "Tony"], ["company_id", 1]]
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "users" ("name", "company_id") VALUES (?, ?)  [["name", "Miguel"], ["company_id", 1]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar) [0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "company_id" integer) 
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "companies" ("name") VALUES (?)  [["name", "Reflektive, Inc."]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("name", "company_id") VALUES (?, ?)[0m  [["name", "Tony"], ["company_id", 1]]
+  [1m[35m (0.4ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "users" ("name", "company_id") VALUES (?, ?)  [["name", "Miguel"], ["company_id", 1]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar) [0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "company_id" integer) 
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "companies" ("name") VALUES (?)  [["name", "Reflektive, Inc."]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("name", "company_id") VALUES (?, ?)[0m  [["name", "Tony"], ["company_id", 1]]
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "users" ("name", "company_id") VALUES (?, ?)  [["name", "Miguel"], ["company_id", 1]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar) [0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "company_id" integer) 
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "companies" ("name") VALUES (?)  [["name", "Reflektive, Inc."]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("name", "company_id") VALUES (?, ?)[0m  [["name", "Tony"], ["company_id", 1]]
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "users" ("name", "company_id") VALUES (?, ?)  [["name", "Miguel"], ["company_id", 1]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mReviews::User Load (0.1ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mReviews::User Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mCore::Company Load (0.2ms)[0m  SELECT  "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar) [0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "company_id" integer) 
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "companies" ("name") VALUES (?)  [["name", "Reflektive, Inc."]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("name", "company_id") VALUES (?, ?)[0m  [["name", "Tony"], ["company_id", 1]]
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "users" ("name", "company_id") VALUES (?, ?)  [["name", "Miguel"], ["company_id", 1]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar) [0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "company_id" integer) 
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "companies" ("name") VALUES (?)  [["name", "Reflektive, Inc."]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("name", "company_id") VALUES (?, ?)[0m  [["name", "Tony"], ["company_id", 1]]
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "users" ("name", "company_id") VALUES (?, ?)  [["name", "Miguel"], ["company_id", 1]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mReviews::User Load (0.1ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mReviews::Company Load (0.1ms)[0m  [1mSELECT  "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mReviews::User Load (0.2ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mReviews::Company Load (0.1ms)[0m  [1mSELECT  "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mReviews::User Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."company_id" = ?  [["company_id", 1]]
+  [1m[36mCore::User Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mCore::Company Load (0.0ms)[0m  SELECT  "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCore::User Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."company_id" = ?[0m  [["company_id", 1]]
+  [1m[35mCore::User Load (0.1ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mCore::Company Load (0.0ms)[0m  [1mSELECT  "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar) [0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "company_id" integer) 
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "companies" ("name") VALUES (?)  [["name", "Reflektive, Inc."]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("name", "company_id") VALUES (?, ?)[0m  [["name", "Tony"], ["company_id", 1]]
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "users" ("name", "company_id") VALUES (?, ?)  [["name", "Miguel"], ["company_id", 1]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar) [0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "company_id" integer) 
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "companies" ("name") VALUES (?)  [["name", "Reflektive, Inc."]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("name", "company_id") VALUES (?, ?)[0m  [["name", "Tony"], ["company_id", 1]]
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "users" ("name", "company_id") VALUES (?, ?)  [["name", "Miguel"], ["company_id", 1]]
+  [1m[36m (0.4ms)[0m  [1mcommit transaction[0m
+  [1m[35mReviews::User Load (0.2ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mReviews::User Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mReviews::Company Load (0.1ms)[0m  SELECT  "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mReviews::User Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mReviews::Company Load (0.0ms)[0m  SELECT  "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mReviews::User Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."company_id" = ?[0m  [["company_id", 1]]
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar) [0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "company_id" integer) 
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "companies" ("name") VALUES (?)  [["name", "Reflektive, Inc."]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("name", "company_id") VALUES (?, ?)[0m  [["name", "Tony"], ["company_id", 1]]
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "users" ("name", "company_id") VALUES (?, ?)  [["name", "Miguel"], ["company_id", 1]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mCore::User Load (0.2ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mCore::User Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mCore::Company Load (0.1ms)[0m  SELECT  "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCore::User Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mCore::Company Load (0.0ms)[0m  SELECT  "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCore::User Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."company_id" = ?[0m  [["company_id", 1]]
+  [1m[35mReviews::User Load (0.1ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mReviews::Company Load (0.1ms)[0m  [1mSELECT  "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mReviews::User Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."company_id" = ?  [["company_id", 1]]
+  [1m[36mReviews::User Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mReviews::Company Load (0.0ms)[0m  SELECT  "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mReviews::User Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mGoals::User Load (0.1ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mGoals::User Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mCore::Company Load (0.0ms)[0m  SELECT  "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mGoals::User Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mCore::Company Load (0.0ms)[0m  SELECT  "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCore::User Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."company_id" = ?[0m  [["company_id", 1]]
+  [1m[35m (3.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "companies" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "company_id" integer)[0m
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar) [0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "company_id" integer) 
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar) [0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "company_id" integer) 
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "companies" ("name") VALUES (?)  [["name", "Reflektive, Inc."]]
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("name", "company_id") VALUES (?, ?)[0m  [["name", "Tony"], ["company_id", 1]]
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "users" ("name", "company_id") VALUES (?, ?)  [["name", "Miguel"], ["company_id", 1]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mCore::Company Load (0.2ms)[0m  SELECT  "companies".* FROM "companies"  ORDER BY "companies"."id" ASC LIMIT 1
+  [1m[36mCore::Company Load (0.2ms)[0m  [1mSELECT  "companies".* FROM "companies"  ORDER BY "companies"."id" ASC LIMIT 1[0m
+  [1m[35mCore::User Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."company_id" = ?  [["company_id", 1]]
+  [1m[36mCore::Company Load (0.1ms)[0m  [1mSELECT  "companies".* FROM "companies"  ORDER BY "companies"."id" ASC LIMIT 1[0m
+  [1m[35mCore::User Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."company_id" = ?  [["company_id", 1]]
+  [1m[36mCore::Company Load (0.1ms)[0m  [1mSELECT  "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCore::Company Load (0.1ms)[0m  SELECT  "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mReviews::User Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mReviews::User Load (0.1ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mReviews::Company Load (0.1ms)[0m  [1mSELECT  "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mReviews::User Load (0.1ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mReviews::Company Load (0.1ms)[0m  [1mSELECT  "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mReviews::User Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."company_id" = ?  [["company_id", 1]]
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar) [0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "company_id" integer) 
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "companies" ("name") VALUES (?)  [["name", "Reflektive, Inc."]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("name", "company_id") VALUES (?, ?)[0m  [["name", "Tony"], ["company_id", 1]]
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "users" ("name", "company_id") VALUES (?, ?)  [["name", "Miguel"], ["company_id", 1]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mGoals::User Load (0.1ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mGoals::User Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mCore::Company Load (0.1ms)[0m  SELECT  "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mGoals::User Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mCore::Company Load (0.0ms)[0m  SELECT  "companies".* FROM "companies" WHERE "companies"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCore::User Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."company_id" = ?[0m  [["company_id", 1]]
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar) [0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "company_id" integer) 
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "companies" ("name") VALUES (?)  [["name", "Reflektive, Inc."]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("name", "company_id") VALUES (?, ?)[0m  [["name", "Tony"], ["company_id", 1]]
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "users" ("name", "company_id") VALUES (?, ?)  [["name", "Miguel"], ["company_id", 1]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mGoals::User Load (0.1ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar) [0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "company_id" integer) 
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "companies" ("name") VALUES (?)  [["name", "Reflektive, Inc."]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("name", "company_id") VALUES (?, ?)[0m  [["name", "Tony"], ["company_id", 1]]
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "users" ("name", "company_id") VALUES (?, ?)  [["name", "Miguel"], ["company_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
